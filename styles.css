@@ -1,0 +1,749 @@
+:root {
+    /* Default values - will be overridden by config.js */
+    --color-primary: #FFFFFF;
+    --color-secondary: #E0E0E0;
+    --color-hover: #FFD324;
+    --color-text-shadow: rgba(0, 0, 0, 0.8);
+    --color-overlay: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.15) 0%, 
+        rgba(0, 0, 0, 0.5) 50%, 
+        rgba(0, 0, 0, 0.85) 100%);
+    --color-back-button-hover-bg: rgba(255, 255, 255, 0.2);
+    /* Live indicator colors */
+    --color-live-bg: rgba(255, 0, 0, 0.8);
+    --color-live-text: #FFFFFF;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Ubuntu", sans-serif;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Style for the main content area to center its children */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Site title clickable styling */
+.site-title {
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.2s;
+    user-select: none; /* Prevents text selection */
+}
+.site-title:hover {
+    color: var(--color-hover);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.site-title {
+    font-size: 4.5rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+/* Navigation */
+.navbar {
+    margin: 20px 0 40px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 15px;
+    right: 15px;
+    height: 2px;
+    background-color: var(--color-hover);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+}
+
+.nav-links a:hover {
+    color: var(--color-hover);
+}
+
+.nav-links a.active {
+    color: var(--color-hover);
+    font-weight: 500;
+}
+
+/* Grid Layout - Using auto-fit with fixed card width */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 240px);
+    gap: 20px;
+    padding: 0 75px 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Responsive Grid Layout - Adjust padding and gaps */
+@media (max-width: 1400px) {
+    .grid-container {
+        padding: 0 60px 35px;
+        gap: 18px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .grid-container {
+        padding: 0 50px 30px;
+        gap: 16px;
+    }
+}
+
+/* Mobile responsive design starting at 980px and below */
+@media (max-width: 980px) {
+    /* Header responsive */
+    .header {
+        padding: 30px 20px;
+        text-align: center;
+    }
+    
+    .site-title {
+        font-size: 3.5rem;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+    }
+    
+    .navbar {
+        margin: 15px 0 30px;
+    }
+    
+    .nav-links {
+        gap: 8px;
+        padding: 0 10px;
+    }
+    
+    .nav-links a {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+    
+    /* Grid responsive */
+    .grid-container {
+        gap: 15px;
+        padding: 0 40px 30px;
+    }
+    
+    /* Footer responsive */
+    .footer {
+        margin-top: 40px;
+        padding: 30px 20px;
+    }
+    
+    .footer-content {
+        gap: 25px;
+        padding: 0 15px;
+    }
+    
+    .footer-title {
+        font-size: 2.2rem;
+    }
+    
+    .footer-links {
+        gap: 12px;
+        justify-content: center;
+    }
+    
+    .footer-links a {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header responsive */
+    .header {
+        padding: 25px 15px;
+    }
+    
+    .site-title {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+    }
+    
+    .navbar {
+        margin: 12px 0 25px;
+    }
+    
+    .nav-links a {
+        font-size: 0.95rem;
+        padding: 5px 10px;
+    }
+    
+    /* Grid responsive */
+    .grid-container {
+        gap: 12px;
+        padding: 0 30px 25px;
+    }
+    
+    /* Footer responsive */
+    .footer {
+        margin-top: 35px;
+        padding: 25px 15px;
+    }
+    
+    .footer-content {
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .footer-title {
+        font-size: 2rem;
+    }
+    
+    .footer-links {
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-links a {
+        font-size: 0.85rem;
+        padding: 3px 6px;
+    }
+}
+
+/* Special breakpoint for cards under 592px - fit 2 cards per row */
+@media (max-width: 592px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 20px 20px;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Header responsive */
+    .header {
+        padding: 20px 10px;
+    }
+    
+    .site-title {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        letter-spacing: 0px;
+    }
+    
+    .navbar {
+        margin: 10px 0 20px;
+    }
+    
+    .nav-links {
+        gap: 5px;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+    }
+    
+    /* Footer responsive */
+    .footer {
+        margin-top: 30px;
+        padding: 20px 10px;
+    }
+    
+    .footer-content {
+        gap: 15px;
+        padding: 0 5px;
+    }
+    
+    .footer-title {
+        font-size: 1.8rem;
+    }
+    
+    .footer-links a {
+        font-size: 0.8rem;
+        padding: 2px 4px;
+    }
+}
+
+/* New style for when sportsGrid hosts lists or player */
+.content-host {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Loading and Error States */
+.loading, .error, .no-matches, .no-streams {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+}
+
+.error {
+    color: #ff5555;
+}
+
+/* Match Cards */
+.matches-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-button {
+    cursor: pointer;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--color-back-button-hover-bg);
+    color: var(--color-hover);
+}
+
+.match-title-header {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.match-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.match-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.match-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+.match-date {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Streams */
+.streams-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stream-source-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.source-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.streams-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stream-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.stream-item:hover {
+    background-color: rgba(255, 211, 36, 0.2);
+    transform: translateY(-2px);
+}
+
+.stream-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stream-number {
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.stream-language {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.quality-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.quality-badge.hd {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+}
+
+.quality-badge.sd {
+    background-color: rgba(241, 196, 15, 0.2);
+    color: #f1c40f;
+}
+
+/* Stream player */
+.player-area {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.stream-info-header {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.close-player {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.close-player:hover {
+    background-color: rgba(255, 211, 36, 0.2);
+    color: var(--color-hover);
+}
+
+.player-area iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    display: block;
+}
+
+/* Responsive iframe */
+@media (max-width: 768px) {
+    .player-area iframe {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .player-area iframe {
+        height: 240px;
+    }
+}
+
+/* Footer Styles */
+.footer {
+    margin-top: 60px;
+    padding: 40px 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-logo {
+    text-align: center;
+}
+
+.footer-title {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin: 0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.footer-title:hover {
+    color: var(--color-hover);
+}
+
+.footer-nav {
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-hover);
+}
+
+.footer-copyright {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+}
+
+/* Card Styles - Fixed 240x400 dimensions, responsive under 592px */
+.sport-card {
+    width: 240px;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: #000;
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
+    transform: translateZ(0) scale(1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Responsive card sizing under 592px */
+@media (max-width: 592px) {
+    .sport-card {
+        width: 100%;
+        height: 320px;
+    }
+}
+
+.sport-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.sport-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+    border-radius: 20px;
+    transform: scale(1);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.sport-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-overlay);
+    border-radius: 20px;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.95;
+    will-change: opacity;
+    mix-blend-mode: multiply;
+}
+
+.sport-card:hover .sport-image {
+    transform: scale(1.05);
+}
+
+.sport-card:hover .sport-image::after {
+    opacity: 1;
+}
+
+.sport-info {
+    position: relative;
+    padding: 25px 15px;
+    text-align: center;
+    z-index: 3;
+}
+
+.sport-title {
+    font-size: 1.5rem;
+    margin: 0 0 5px 0;
+    color: var(--color-hover);
+    font-weight: 700;
+    text-shadow: 0 2px 4px var(--color-text-shadow);
+}
+
+.sport-category {
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+    margin: 0;
+    font-weight: 400;
+    text-shadow: 
+        0 1px 2px var(--color-text-shadow),
+        0 1px 3px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+    opacity: 0.95;
+    transition: color 0.3s ease;
+}
+
+/* Font Classes */
+.ubuntu-light { font-weight: 300; font-style: normal; }
+.ubuntu-regular { font-weight: 400; font-style: normal; }
+.ubuntu-medium { font-weight: 500; font-style: normal; }
+.ubuntu-bold { font-weight: 700; font-style: normal; }
+.ubuntu-light-italic { font-weight: 300; font-style: italic; }
+.ubuntu-regular-italic { font-weight: 400; font-style: italic; }
+.ubuntu-medium-italic { font-weight: 500; font-style: italic; }
+.ubuntu-bold-italic { font-weight: 700; font-style: italic; }
+
+.stream-item {
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.stream-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sport-card {
+    position: relative;
+}
+
+/* Live badge on grid cards */
+.live-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: var(--color-live-bg);
+    color: var(--color-live-text);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 5;
+}
